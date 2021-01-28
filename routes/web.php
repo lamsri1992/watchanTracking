@@ -19,5 +19,6 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'tracking'], function () {
 	Route::get('/', function () { return view('tracking.index'); });
+	Route::get('/create_orderslist', function () { return view('tracking.create'); });
 	Route::get('/1', function () { return view('tracking.show'); });
 });

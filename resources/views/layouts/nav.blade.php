@@ -20,9 +20,10 @@
                         ระบบบริหารจัดการเวชระเบียนผู้ป่วยใน
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">ยืมเวชระเบียนผู้ป่วยใน</a>
-                        <a class="dropdown-item" href="#">คลังเวชระเบียนผู้ป่วยใน</a>
-                        <a class="dropdown-item" href="/tracking">ติดตามเวชระเบียนผู้ป่วยใน</a>
+                        <a class="dropdown-item" href="/tracking/create_orderslist"><i class="fas fa-folder-plus"></i> สร้าง Orders List</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-file-export"></i> ยืมเวชระเบียนผู้ป่วยใน</a>
+                        <a class="dropdown-item" href="#"><i class="fas fa-database"></i> คลังเวชระเบียนผู้ป่วยใน</a>
+                        <a class="dropdown-item" href="/tracking"><i class="fas fa-paper-plane"></i> ติดตามเวชระเบียนผู้ป่วยใน</a>
                     </div>
                 </li>
             </ul>
