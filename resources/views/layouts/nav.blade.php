@@ -20,16 +20,25 @@
                         ระบบบริหารจัดการเวชระเบียนผู้ป่วยใน
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/tracking/create_orderslist"><i class="fas fa-folder-plus"></i> สร้าง Orders List</a>
-                        <a class="dropdown-item" href="#"><i class="fas fa-file-export"></i> ยืมเวชระเบียนผู้ป่วยใน</a>
                         <a class="dropdown-item" href="#"><i class="fas fa-database"></i> คลังเวชระเบียนผู้ป่วยใน</a>
-                        <a class="dropdown-item" href="/tracking"><i class="fas fa-paper-plane"></i> ติดตามเวชระเบียนผู้ป่วยใน</a>
+                        <a class="dropdown-item" href="/tracking"><i class="fas fa-map-marker-alt"></i> ติดตามเวชระเบียนผู้ป่วยใน</a>
+                        <a class="dropdown-item" href="/drugOrder"><i class="fas fa-notes-medical"></i> รายการแพทย์สั่งยา</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown {{ (request()->is('admin')) ? 'active' : '' }}">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        สร้างรายการใหม่
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/drugOrder/createDrugOrder"><i class="fas fa-briefcase-medical"></i> สร้าง Orders แพทย์</a>
+                        <a class="dropdown-item" href="/tracking/createOrderList"><i class="fas fa-folder-plus"></i> สร้าง Orders List</a>
                     </div>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="ระบุหมายเลข Orders ID" style="font-size: 11px;" size="30" required>
-                <button class="btn btn-success btn-sm my-2 my-sm-0" type="submit"><i class="fa fa-search"></i> ค้นหาเวชระเบียน</button>
+                <input class="form-control mr-sm-2" type="text" placeholder="ระบุหมายเลข VN" style="font-size: 11px;" size="20" required>
+                <button class="btn btn-success btn-sm my-2 my-sm-0" type="submit"><i class="fa fa-search"></i> ค้นหา</button>
             </form>
         </div>
     </div>

@@ -6,30 +6,41 @@
     <article class="card">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page"><i class="far fa-folder"></i> เวชระเบียนผู้ป่วยใน</li>
+                <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-notes-medical"></i> รายการแพทย์สั่งยา (ผู้ป่วยใน)</li>
             </ol>
         </nav>
         <div class="card-body">
             <div class="container-fluid">
-                <table id="trackList" class="table table-striped table-borderless table-sm">
-                    <thead class="thead-dark">
+                <table id="trackList" class="display" width="100%">
+                    <thead style="color:white;background-color:#343a40;">
                         <tr>
-                            <th class="text-center">Orders ID</th>
-                            <th class="text-center">Orders Case</th>
+                            <th class="text-center">DrugID</th>
+                            <th class="text-center">VN</th>
+                            <th class="text-center">HN</th>
                             <th class="text-center"><i class="far fa-calendar-plus"></i> วันที่สร้าง</th>
-                            <th class="text-center">สถานะ</th>
-                            <th class="text-center">Option</th>
+                            <th class="text-center">Order</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <th class="text-center">WCC237360001</th>
-                            <td class="text-center"><span class="badge badge-danger" style="font-size: 14px;">3 เคส</span></td>
+                            <th class="text-center">WCD237360001</th>
+                            <td class="text-center">164000001</td>
+                            <td class="text-center">1214</td>
                             <td class="text-center">2021-01-27</td>
-                            <td class="text-center text-secondary"><i class="fa fa-spinner fa-spin"></i> กำลังดำเนินการ</td>
                             <td class="text-center">
-                                <a href="/tracking/1" class="badge badge-success" style="font-size: 14px;">
-                                    <i class="fas fa-map-marker-alt"></i> ติดตามเวชระเบียน
+                                <a href="/drugOrder/1" class="badge badge-success" style="font-size: 14px;">
+                                    <i class="far fa-clipboard"></i> รายละเอียด
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="text-center">WCD237360002</th>
+                            <td class="text-center">164000002</td>
+                            <td class="text-center">6522</td>
+                            <td class="text-center">2021-01-27</td>
+                            <td class="text-center">
+                                <a href="/drugOrder/1" class="badge badge-success" style="font-size: 14px;">
+                                    <i class="far fa-clipboard"></i> รายละเอียด
                                 </a>
                             </td>
                         </tr>

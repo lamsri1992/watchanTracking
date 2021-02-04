@@ -19,7 +19,14 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'tracking'], function () {
 	Route::get('/', function () { return view('tracking.index'); });
-	Route::get('/create_orderslist', function () { return view('tracking.create'); });
+	Route::get('/createOrderList', function () { return view('tracking.create'); });
 	Route::get('/1', function () { return view('tracking.show'); });
     Route::post('/createOrder','OrderListController@createOrder')->name('tracking.createOrder');
+});
+
+Route::group(['prefix' => 'drugOrder'], function () {
+	Route::get('/', function () { return view('drug.index'); });
+	Route::get('/1', function () { return view('drug.show'); });
+	Route::get('/createDrugOrder', function () { return view('drug.create'); });
+    Route::post('/createOrder','DrugOrderController@createOrder')->name('drug.createOrder');
 });

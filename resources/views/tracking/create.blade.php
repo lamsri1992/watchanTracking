@@ -6,7 +6,7 @@
     <article class="card">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-folder-plus"></i> สร้าง Orders List ใหม่</li>
+                <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-folder-plus"></i> สร้าง Orders List</li>
             </ol>
         </nav>
         <div class="card-body">
@@ -74,8 +74,8 @@
         },
         order: [[1, 'asc']],
         lengthMenu: [
-            [20, 50, 100, -1],
-            [20, 50, 100, "All"]
+            [10, 50, 100, -1],
+            [10, 50, 100, "All"]
         ],
         responsive: true,
         rowReorder: {
