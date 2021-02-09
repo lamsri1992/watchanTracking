@@ -10,7 +10,8 @@ class ListApiController extends Controller
 {
     public function index()
     {
-        $list = DB::table('t_visit')
+        $list = DB::connection('pgsql')
+                ->table('t_visit')
                 ->select('t_visit.visit_hn','t_visit.visit_vn','t_visit.visit_patient_self_doctor'
                 ,'b_employee.employee_firstname','b_employee.employee_lastname','t_visit.visit_bed'
                 ,'t_visit.visit_ipd_discharge_date_time')
