@@ -17,33 +17,26 @@
                             <th class="text-center">DrugID</th>
                             <th class="text-center">VN</th>
                             <th class="text-center">HN</th>
+                            <th class="text-center">เตียง</th>
                             <th class="text-center"><i class="far fa-calendar-plus"></i> วันที่สร้าง</th>
                             <th class="text-center">Order</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($data as $list)
                         <tr>
-                            <th class="text-center">WCD237360001</th>
-                            <td class="text-center">164000001</td>
-                            <td class="text-center">1214</td>
-                            <td class="text-center">2021-01-27</td>
+                            <th class="text-center">ODL23736{{ str_pad($list->drug_id, 4, '0', STR_PAD_LEFT) }}</th>
+                            <td class="text-center">{{ $list->drug_vn }}</td>
+                            <td class="text-center">{{ $list->drug_hn }}</td>
+                            <td class="text-center">{{ $list->drug_bed }}</td>
+                            <td class="text-center">{{ $list->create_at }}</td>
                             <td class="text-center">
-                                <a href="/drugOrder/1" class="badge badge-success" style="font-size: 14px;">
-                                    <i class="far fa-clipboard"></i> รายละเอียด
+                                <a href="{{ route('drug.show',base64_encode($list->drug_id)) }}" class="btn btn-sm btn-info">
+                                    <i class="fa fa-clipboard-list"></i> Order View
                                 </a>
                             </td>
                         </tr>
-                        <tr>
-                            <th class="text-center">WCD237360002</th>
-                            <td class="text-center">164000002</td>
-                            <td class="text-center">6522</td>
-                            <td class="text-center">2021-01-27</td>
-                            <td class="text-center">
-                                <a href="/drugOrder/1" class="badge badge-success" style="font-size: 14px;">
-                                    <i class="far fa-clipboard"></i> รายละเอียด
-                                </a>
-                            </td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

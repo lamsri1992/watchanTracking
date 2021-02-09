@@ -25,8 +25,8 @@ Route::group(['prefix' => 'tracking'], function () {
 });
 
 Route::group(['prefix' => 'drugOrder'], function () {
-	Route::get('/', function () { return view('drug.index'); });
-	Route::get('/1', function () { return view('drug.show'); });
+	Route::get('/','DrugOrderController@index')->name('drug.index');
 	Route::get('/createDrugOrder', function () { return view('drug.create'); });
+	Route::get('/{id}','DrugOrderController@show')->name('drug.show');
     Route::post('/createOrder','DrugOrderController@createOrder')->name('drug.createOrder');
 });

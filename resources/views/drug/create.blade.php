@@ -98,6 +98,9 @@
                             showConfirmButton: false,
                             timer: 3000
                         })
+                        window.setTimeout(function () {
+                                location.replace('/drugOrder/')
+                        }, 1500);
                     }
                 });
             }
