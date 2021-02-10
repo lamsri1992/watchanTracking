@@ -29,4 +29,5 @@ Route::group(['prefix' => 'drugOrder'], function () {
 	Route::get('/createDrugOrder', function () { return view('drug.create'); });
 	Route::get('/{id}','DrugOrderController@show')->name('drug.show');
     Route::post('/createOrder','DrugOrderController@createOrder')->name('drug.createOrder');
+	Route::post('/uploadFile', 'DrugOrderController@upload');
 });

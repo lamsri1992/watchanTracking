@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use File;
 use DB;
 
 class DrugOrderController extends Controller
@@ -12,7 +13,6 @@ class DrugOrderController extends Controller
     function index()
     {
         $data = DB::connection('mysql')->table('order_drug')
-                ->where('drug_status', 1)
                 ->get();
         return view('drug.index', ['data'=>$data]);
     }
@@ -23,25 +23,35 @@ class DrugOrderController extends Controller
         $list = DB::connection('mysql')->table('order_drug')
                 ->where('drug_id', $parm_id)
                 ->first();
+        // $vn = $list->drug_vn;
+        // $files = File::allFiles('MDR/'.$vn.'/Order');
+        // $files = File::files(public_path('MDR/'.$vn.'/Order'));
+        // return view('drug.show', ['list'=>$list,'files'=>$files]);
         return view('drug.show', ['list'=>$list]);
     }
 
     function createOrder(Request $request)
     {
         $json = $request->get('formData');
-        Storage::disk('local')->makeDirectory('public/MDR/'.$json['visit_vn']);
-        DB::connection('mysql')->table('order_drug')->insert(
-            [
-                'drug_hn' => $json['visit_hn'],
-                'drug_vn' => $json['visit_vn'],
-                'drug_bed' => $json['visit_bed']
-            ]
-        );
+        $path = public_path('MDR/'.$json['visit_vn'].'/Order');
+        if(!File::isDirectory($path)){
+            File::makeDirectory($path, 0777, true, true);
+            DB::connection('mysql')->table('order_drug')->insert(
+                [
+                    'drug_hn' => $json['visit_hn'],
+                    'drug_vn' => $json['visit_vn'],
+                    'drug_bed' => $json['visit_bed']
+                ]
+            );
+        }
     }
 
-    public function store(Request $request)
+    public function upload(Request $request)
     {
-        $path = $request->file('orderFile')->store('MDR','public');
-        return redirect('/');
+        $file = $request->file('vn_file');
+        $file_name = $file->getClientOriginalName();
+        $vn = $request->get('vn_id');
+        $file->move(public_path('MDR/'.$vn.'/Order'), $file_name);
+        return redirect('/drugOrder');
     }
 }

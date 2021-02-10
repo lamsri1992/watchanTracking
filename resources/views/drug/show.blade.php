@@ -13,36 +13,53 @@
         <div class="card-body">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-6">
-                        <table class="table table-striped text-center table-borderless">
+                    <div class="col-7">
+                        <table class="table table-striped table-borderless">
                             <tr>
-                                <th>หมายเลข VN</th>
+                                <th class="text-center">หมายเลข VN</th>
                                 <td>{{ $list->drug_vn }}</td>
                             </tr>
                             <tr>
-                                <th>หมายเลข HN</th>
+                                <th class="text-center">หมายเลข HN</th>
                                 <td>{{ $list->drug_hn }}</td>
                             </tr>
                             <tr>
-                                <th>เลขเตียง/ห้อง</th>
+                                <th class="text-center">เลขเตียง/ห้อง</th>
                                 <td>{{ $list->drug_bed }}</td>
                             </tr>
                             <tr>
-                                <th>วันที่สร้าง</th>
+                                <th class="text-center">วันที่สร้าง</th>
                                 <td>{{ $list->create_at }}</td>
                             </tr>
                             <tr>
-                                <th>แก้ไข</th>
-                                <td>{{ $list->update_at }}</td>
-                            </tr>
-                            <tr>
-                                <th>ไฟล์</th>
-                                <td><a href="#"><i class="far fa-file-pdf"></i> Drug_Order_090221</a></td>
+                                <th class="text-center"><i class="fa fa-clipboard-list"></i> ไฟล์สแกน</th>
+                                <td>
+                                    @php
+                                        $path = "/MDR/".$list->drug_vn."/Order/";
+                                        $objOpen = opendir('MDR/'.$list->drug_vn.'/Order');
+                                        while (($file = readdir($objOpen)) !== false)
+                                        {
+                                            if ($file == '.' || $file == '..')continue;
+                                            echo "<a href='".$path.$file."' target='_blank'><i class='far fa-file-pdf'></i> ".$file."</a><br>";
+                                        }
+                                    @endphp
+                                </td>
                             </tr>
                         </table>
                     </div>
-                    <div class="col-6 table-bordered">
-                       <i class="far fa-file-pdf text-danger"></i> Show (PDF File)
+                    <div class="col-5">
+                        <h3>อัพโหลด Order</h3>
+                        <form action="{{ url('/drugOrder/uploadFile') }}" method="POST" enctype="multipart/form-data">
+                            {{ csrf_field() }}
+                            {{ method_field('POST') }}
+                            <div class="form-group">
+                                <input type="file" class="form-control-file" name="vn_file">
+                                <input type="text" class="form-control" name="vn_id" value="{{ $list->drug_vn }}" hidden>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-upload"></i> Upload</button>  
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
