@@ -20,7 +20,7 @@
                         ระบบบริหารจัดการเวชระเบียนผู้ป่วยใน
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#"><i class="fas fa-database"></i> คลังเวชระเบียนผู้ป่วยใน</a>
+                        <a class="dropdown-item" href="/store"><i class="fas fa-database"></i> คลังเวชระเบียนผู้ป่วยใน</a>
                         <a class="dropdown-item" href="/tracking"><i class="fas fa-map-marker-alt"></i> ติดตามเวชระเบียนผู้ป่วยใน</a>
                         <a class="dropdown-item" href="/drugOrder"><i class="fas fa-notes-medical"></i> รายการแพทย์สั่งยา</a>
                     </div>

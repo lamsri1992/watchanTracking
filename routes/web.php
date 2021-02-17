@@ -31,3 +31,7 @@ Route::group(['prefix' => 'drugOrder'], function () {
     Route::post('/createOrder','DrugOrderController@createOrder')->name('drug.createOrder');
 	Route::post('/uploadFile', 'DrugOrderController@upload');
 });
+
+Route::group(['prefix' => 'store'], function () {
+	Route::get('/', function () { return view('store.index'); });
+});
