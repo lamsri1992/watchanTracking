@@ -23,10 +23,6 @@ class DrugOrderController extends Controller
         $list = DB::connection('mysql')->table('order_drug')
                 ->where('drug_id', $parm_id)
                 ->first();
-        // $vn = $list->drug_vn;
-        // $files = File::allFiles('MDR/'.$vn.'/Order');
-        // $files = File::files(public_path('MDR/'.$vn.'/Order'));
-        // return view('drug.show', ['list'=>$list,'files'=>$files]);
         return view('drug.show', ['list'=>$list]);
     }
 
@@ -52,6 +48,11 @@ class DrugOrderController extends Controller
         $file_name = $file->getClientOriginalName();
         $vn = $request->get('vn_id');
         $file->move(public_path('MDR/'.$vn.'/Order'), $file_name);
+
+        $Token = "qhtvdJ3vVilU4pkcUlcimaoFCf3AIQa38EvZC9zdxQI";
+        $message = "IPD Create New Order";
+        line_notify($Token, $message);
+
         return redirect('/drugOrder');
     }
 }
