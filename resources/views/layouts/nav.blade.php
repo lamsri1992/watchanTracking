@@ -17,6 +17,9 @@
                 <li class="nav-item {{ (request()->is('drugOrder')) ? 'active' : '' }}">
                     <a class="nav-link" href="/drugOrder"><i class="fa fa-notes-medical"></i> รายการสั่งยาผู้ป่วยใน</a>
                 </li>
+                <li class="nav-item {{ (request()->is('tracking')) ? 'active' : '' }}">
+                    <a class="nav-link" href="/tracking"><i class="fa fa-map-marked-alt"></i> ระบบติดตามเวชระเบียนผู้ป่วยใน</a>
+                </li>
                 {{-- <li class="nav-item dropdown {{ (request()->is('tracking')) ? 'active' : '' }}">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

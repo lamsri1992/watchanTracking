@@ -6,6 +6,7 @@
     <article class="card">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
+                <li class="breadcrumb-item" aria-current="page"><a href="/tracking"><i class="fa fa-map-marked-alt"></i> ระบบติดตามเวชระเบียนผู้ป่วยใน</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-folder-plus"></i> สร้าง Orders List</li>
             </ol>
         </nav>

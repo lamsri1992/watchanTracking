@@ -6,7 +6,8 @@
     <article class="card">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-briefcase-medical"></i> สร้าง Orders แพทย์</li>
+                <li class="breadcrumb-item" aria-current="page"><a href="/drugOrder"> <i class="fas fa-notes-medical"></i> รายการแพทย์สั่งยา (ผู้ป่วยใน)</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-file-medical"></i> สร้างรายการสั่งยา</li>
             </ol>
         </nav>
         <div class="card-body">

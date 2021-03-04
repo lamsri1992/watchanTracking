@@ -6,33 +6,41 @@
     <article class="card">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page"><i class="far fa-folder"></i> เวชระเบียนผู้ป่วยใน</li>
+                <li class="breadcrumb-item active" aria-current="page"><i class="fa fa-map-marked-alt"></i> ระบบติดตามเวชระเบียนผู้ป่วยใน</li>
             </ol>
         </nav>
         <div class="card-body">
             <div class="container-fluid">
+                <div class="row" style="margin-bottom: 1rem;">
+                    <div class="col-6">
+                        <h2>รายการเวชระเบียนผู้ป่วยในทั้งหมด</h2>
+                    </div>
+                    <div class="col-6 text-right">
+                        <a href="/tracking/createOrderList" class="btn btn-danger"><i class="fa fa-plus-circle"></i> สร้างรายการใหม่</a>
+                    </div>
+                </div>
                 <table id="trackList" class="table table-striped table-borderless table-sm">
                     <thead class="thead-dark">
                         <tr>
-                            <th class="text-center">Orders ID</th>
-                            <th class="text-center">Orders Case</th>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">จำนวน</th>
                             <th class="text-center"><i class="far fa-calendar-plus"></i> วันที่สร้าง</th>
                             <th class="text-center">สถานะ</th>
-                            <th class="text-center">Option</th>
+                            <th class="text-center">ตัวเลือก</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        {{-- <tr>
                             <th class="text-center">WCC237360001</th>
                             <td class="text-center"><span class="badge badge-danger" style="font-size: 14px;">3 เคส</span></td>
                             <td class="text-center">2021-01-27</td>
                             <td class="text-center text-secondary"><i class="fa fa-spinner fa-spin"></i> กำลังดำเนินการ</td>
                             <td class="text-center">
-                                <a href="/tracking/1" class="badge badge-success" style="font-size: 14px;">
-                                    <i class="fas fa-map-marker-alt"></i> ติดตามเวชระเบียน
+                                <a href="/tracking/1" class="btn btn-success btn-sm" style="font-size: 14px;">
+                                    <i class="fas fa-search"></i> ติดตามเวชระเบียน
                                 </a>
                             </td>
-                        </tr>
+                        </tr> --}}
                     </tbody>
                 </table>
             </div>
