@@ -27,7 +27,7 @@
                 </table>
             </div>
             <div class="col-md-3">
-                <button id="btnSubmit" class="btn btn-success btn-lg btn-block"><i class="fa fa-clipboard-list"></i> สร้าง Orders List</button>
+                <button id="btnSubmit" class="btn btn-success btn-block"><i class="fa fa-plus-circle"></i> สร้างรายการ</button>
             </div>
         </div>
     </article>
@@ -102,48 +102,60 @@
             array.push(table.row(rowIdx).data())
         })
 
-        console.log(token);
-        console.log(array);
+        // console.log(token);
+        // console.log(array);
 
         var formData = array;
-
-        $.ajax({
-            url:"{{ route('tracking.createOrder')}}",
-            method:'POST',
-            data:{formData: formData,_token: token},
-            success:function(data){
-                let timerInterval
-                    Swal.fire({
-                    title: 'กำลังสร้าง Orders List',
-                    timer: 2000,
-                    timerProgressBar: true,
-                    didOpen: () => {
-                        Swal.showLoading()
-                        timerInterval = setInterval(() => {
-                        const content = Swal.getContent()
-                        if (content) {
-                            const b = content.querySelector('b')
-                            if (b) {
-                            b.textContent = Swal.getTimerLeft()
+        Swal.fire({
+            title: 'สร้าง Tracking Order ?',
+            text: 'โปรดตรวจสอบรายการ ก่อนสร้างรายการใหม่ทุกครั้ง',
+            showCancelButton: true,
+            confirmButtonText: `สร้างรายการ`,
+            cancelButtonText: `ยกเลิก`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url:"{{ route('tracking.createOrder')}}",
+                    method:'POST',
+                    data:{formData: formData,_token: token},
+                    success:function(data){
+                        let timerInterval
+                            Swal.fire({
+                            title: 'กำลังสร้าง Orders List',
+                            timer: 2000,
+                            timerProgressBar: true,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                timerInterval = setInterval(() => {
+                                const content = Swal.getContent()
+                                if (content) {
+                                    const b = content.querySelector('b')
+                                    if (b) {
+                                    b.textContent = Swal.getTimerLeft()
+                                    }
+                                }
+                                }, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
                             }
-                        }
-                        }, 100)
-                    },
-                    willClose: () => {
-                        clearInterval(timerInterval)
-                    }
-                    }).then((result) => {
-                    if (result.dismiss === Swal.DismissReason.timer) {
-                        Swal.fire({
-                        icon: 'success',
-                        title: 'สร้าง Orders List สำเร็จ',
-                        showConfirmButton: false,
-                        // timer: 1500
+                            }).then((result) => {
+                            if (result.dismiss === Swal.DismissReason.timer) {
+                                    Swal.fire({
+                                    icon: 'success',
+                                    title: 'สร้างรายการสำเร็จ',
+                                    showConfirmButton: false,
+                                    timer: 3000
+                                })
+                                window.setTimeout(function () {
+                                    location.replace('/tracking')
+                                }, 3500);
+                            }
                         })
                     }
-                    })
+                });
             }
-        });
+        })
     });
 });
 </script>

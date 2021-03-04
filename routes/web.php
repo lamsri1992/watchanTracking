@@ -18,9 +18,9 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => 'tracking'], function () {
-	Route::get('/', function () { return view('tracking.index'); });
+	Route::get('/','OrderListController@index')->name('tracking.index');
 	Route::get('/createOrderList', function () { return view('tracking.create'); });
-	Route::get('/1', function () { return view('tracking.show'); });
+	Route::get('/{id}','OrderListController@show')->name('tracking.show');
     Route::post('/createOrder','OrderListController@createOrder')->name('tracking.createOrder');
 });
 

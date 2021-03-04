@@ -30,17 +30,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- <tr>
-                            <th class="text-center">WCC237360001</th>
-                            <td class="text-center"><span class="badge badge-danger" style="font-size: 14px;">3 เคส</span></td>
-                            <td class="text-center">2021-01-27</td>
-                            <td class="text-center text-secondary"><i class="fa fa-spinner fa-spin"></i> กำลังดำเนินการ</td>
+                        @foreach ($data as $order)
+                        <tr>
+                            <th class="text-center">WCC23736{{ str_pad($order->track_id, 4, '0', STR_PAD_LEFT) }}</th>
+                            <td class="text-center"><span class="badge badge-danger" style="font-size: 14px;">{{ $order->track_case }} เคส</span></td>
+                            <td class="text-center">{{ $order->create_at }}</td>
+                            <td class="text-center {{ $order->t_stat_color }}">@php echo $order->t_stat_text @endphp</td>
                             <td class="text-center">
-                                <a href="/tracking/1" class="btn btn-success btn-sm" style="font-size: 14px;">
-                                    <i class="fas fa-search"></i> ติดตามเวชระเบียน
+                                <a href="{{ route('tracking.show',base64_encode($order->track_id)) }}" class="btn btn-info btn-sm">
+                                    <i class="fa fa-search"></i> ติดตามเวชระเบียน
                                 </a>
                             </td>
-                        </tr> --}}
+                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -62,7 +64,7 @@
                 selector: 'td:nth-child(2)'
             },
             order: [
-                [0, 'desc']
+                [0, 'asc']
             ],
             oLanguage: {
                 oPaginate: {
