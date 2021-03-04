@@ -14,11 +14,11 @@
                 <table id="visitList" class="display nowrap table" style="width:100%">
                     <thead class="thead-dark">
                         <tr>
-                            <th class="text-center">VN</th>
+                            <th class="text-center">หมายเลข VN</th>
                             <th class="text-center"><i class="far fa-calendar-check"></i> วันที่ Admit</th>
-                            <th class="text-center">HN</th>
+                            <th class="text-center">หมายเลข HN</th>
                             <th class=""><i class="fas fa-user-md"></i> แพทย์ผู้ตรวจ</th>
-                            <th class="text-center"><i class="fa fa-bed"></i> เตียง</th>
+                            <th class="text-center"><i class="fa fa-bed"></i> เตียง/ห้อง</th>
                             <th class="text-center"><i class="fa fa-plus-circle"></i>&nbsp;</th>
                         </tr>
                     </thead>

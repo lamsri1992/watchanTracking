@@ -11,15 +11,23 @@
         </nav>
         <div class="card-body">
             <div class="container-fluid">
+                <div class="row" style="margin-bottom: 1rem;">
+                    <div class="col-6">
+                        <h2>รายการสั่งยาผู้ป่วยในทั้งหมด</h2>
+                    </div>
+                    <div class="col-6 text-right">
+                        <a href="/drugOrder/createDrugOrder" class="btn btn-danger"><i class="fa fa-plus-circle"></i> สร้างรายการใหม่</a>
+                    </div>
+                </div>
                 <table id="trackList" class="display" width="100%">
                     <thead style="color:white;background-color:#343a40;">
                         <tr>
-                            <th class="text-center">DrugID</th>
-                            <th class="text-center">VN</th>
-                            <th class="text-center">HN</th>
-                            <th class="text-center">เตียง</th>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">หมายเลข VN</th>
+                            <th class="text-center">หมายเลข HN</th>
+                            <th class="text-center">เตียง/ห้อง</th>
                             <th class="text-center"><i class="far fa-calendar-plus"></i> วันที่สร้าง</th>
-                            <th class="text-center">Order</th>
+                            <th class="text-center">ตัวเลือก</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,8 +39,8 @@
                             <td class="text-center">{{ $list->drug_bed }}</td>
                             <td class="text-center">{{ $list->create_at }}</td>
                             <td class="text-center">
-                                <a href="{{ route('drug.show',base64_encode($list->drug_id)) }}" class="btn btn-sm btn-info">
-                                    <i class="fa fa-clipboard-list"></i> Order View
+                                <a href="{{ route('drug.show',base64_encode($list->drug_id)) }}" class="btn btn-info btn-sm">
+                                    <i class="fa fa-search"></i> ดูรายการ
                                 </a>
                             </td>
                         </tr>

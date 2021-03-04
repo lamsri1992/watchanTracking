@@ -24,7 +24,7 @@
                                 <td>{{ $list->drug_hn }}</td>
                             </tr>
                             <tr>
-                                <th class="text-center">เลขเตียง/ห้อง</th>
+                                <th class="text-center">เตียง/ห้อง</th>
                                 <td>{{ $list->drug_bed }}</td>
                             </tr>
                             <tr>
@@ -32,7 +32,7 @@
                                 <td>{{ $list->create_at }}</td>
                             </tr>
                             <tr>
-                                <th class="text-center"><i class="fa fa-clipboard-list"></i> ไฟล์สแกน</th>
+                                <th class="text-center"><i class="far fa-folder-open"></i> ไฟล์ Order</th>
                                 <td>
                                     @php
                                         $path = "/MDR/".$list->drug_vn."/Order/";
@@ -53,7 +53,7 @@
                             {{ csrf_field() }}
                             {{ method_field('POST') }}
                             <div class="form-group">
-                                <input type="file" class="form-control-file" name="vn_file">
+                                <input type="file" class="form-control-file" name="vn_file" required>
                                 <input type="text" class="form-control" name="vn_id" value="{{ $list->drug_vn }}" hidden>
                             </div>
                             <div class="form-group">

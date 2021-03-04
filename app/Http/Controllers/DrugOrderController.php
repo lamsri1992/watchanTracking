@@ -44,13 +44,19 @@ class DrugOrderController extends Controller
 
     public function upload(Request $request)
     {
+        // Upload Files
         $file = $request->file('vn_file');
         $file_name = $file->getClientOriginalName();
         $vn = $request->get('vn_id');
         $file->move(public_path('MDR/'.$vn.'/Order'), $file_name);
-
+        // Get data detail -> send line message
+        $data = DB::connection('mysql')->table('order_drug')
+                ->where('order_drug.drug_vn', $vn)
+                ->first();
+        // send line message
         $Token = "qhtvdJ3vVilU4pkcUlcimaoFCf3AIQa38EvZC9zdxQI";
-        $message = "IPD Create New Order";
+        // $Token = "6UTdo1OJF6WRHLiTJxsN90vGz2eXewUHI7xZ3SSw1dR";
+        $message = "มีรายการสั่งยาใหม่\nหมายเลข HN: ".$data->drug_hn."\nหมายเลข VN: ".$data->drug_vn."\nเตียง/ห้อง: ".$data->drug_bed."\nวันที่สร้าง: ".$data->create_at."";
         line_notify($Token, $message);
 
         return redirect('/drugOrder');
