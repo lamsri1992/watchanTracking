@@ -110,7 +110,7 @@
                         <th class="text-center"><i class="fas fa-id-card"></i> เลข HN</th>
                         <th><i class="fas fa-user-md"></i> แพทย์</th>
                         <th class="text-center"><i class="far fa-clock"></i> วันที่/เวลา Admit</th>
-                        {{-- <th class="text-center">สถานะ</th> --}}
+                        <th class="text-center">สถานะ</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -120,7 +120,7 @@
                         <td class="text-center">{{ $lists->list_hn }}</td>
                         <td>{{ $lists->list_doctor }}</td>
                         <td class="text-center">{{ $lists->list_discharge }}</td>
-                        {{-- <td class="text-center text-success"><i class="fas fa-check"></i> เสร็จสิ้น</td> --}}
+                        <td class="text-center {{ $lists->t_stat_color }}">@php echo $lists->t_stat_text @endphp</td>
                     </tr>
                     @endforeach
                 </tbody>

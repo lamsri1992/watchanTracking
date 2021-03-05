@@ -24,6 +24,7 @@ class OrderListController extends Controller
                 ->first();
         $list = DB::connection('mysql')->table('tracking_list')
                 ->leftJoin('tracking_order', 'tracking_order.track_id', '=', 'tracking_list.track_id')
+                ->leftJoin('track_status', 'track_status.t_stat_id', '=', 'tracking_list.list_status')
                 ->where('tracking_list.track_id', $parm_id)
                 ->get();
         return view('tracking.show', ['order'=>$order , 'list'=>$list]);
@@ -39,6 +40,7 @@ class OrderListController extends Controller
                 'track_case' => $case,
             ]
         );
+        $text = "";
         foreach($data as $array){
             DB::connection('mysql')->table('tracking_list')->insert(
                 [
@@ -49,6 +51,11 @@ class OrderListController extends Controller
                     'track_id' => $OrderID
                 ]
             );
+            $text .= "หมายเลข HN: ".$array['visit_hn']."\nหมายเลข VN: ".$array['visit_vn']."\nวันที่ Discharge: ".$array['visit_ipd_discharge_date_time']."\n\n";
         }
+        // send line message
+            $Token = "XsIxstDVzAVfiIGwm9awArboU9B2nBTZQXLJfA0YDWn";
+            $message = "มีรายการตามชาร์ทใหม่ ".$case." รายการ\n".$text;
+        line_notify($Token, $message);
     }
 }
