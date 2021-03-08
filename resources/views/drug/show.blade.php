@@ -6,7 +6,7 @@
     <article class="card">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/drugOrder"><i class="fas fa-notes-medical"></i> รายการแพทย์สั่งยา</li></a>
+                <li class="breadcrumb-item"><a href="/drugOrder"><i class="fas fa-notes-medical"></i> รายการสั่งยาผู้ป่วยใน</li></a>
                 <li class="breadcrumb-item active" aria-current="page">ODL23736{{ str_pad($list->drug_id, 4, '0', STR_PAD_LEFT) }}</li>
             </ol>
         </nav>
