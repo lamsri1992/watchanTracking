@@ -62,6 +62,18 @@
                             </div>
                         </form>
                     </div>
+                    <div class="container-fluid">
+                        <span><i class="far fa-eye"></i> Preview</span>
+                    @php
+                        $path = "/MDR/".$list->drug_vn."/Order/";
+                        $objOpen = opendir('MDR/'.$list->drug_vn.'/Order');
+                        while (($file = readdir($objOpen)) !== false)
+                        {
+                            if ($file == '.' || $file == '..')continue;
+                            echo "<iframe src='".$path.$file."' style='width:100%;height:700px;''></iframe><br>";
+                        }
+                    @endphp
+                    </div>
                 </div>
             </div>
         </div>
