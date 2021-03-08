@@ -54,12 +54,21 @@ class DrugOrderController extends Controller
                 ->where('order_drug.drug_vn', $vn)
                 ->first();
         // send line message
-        // $Token = "qhtvdJ3vVilU4pkcUlcimaoFCf3AIQa38EvZC9zdxQI";
-        $Token = "6UTdo1OJF6WRHLiTJxsN90vGz2eXewUHI7xZ3SSw1dR";
+        $Token = "qhtvdJ3vVilU4pkcUlcimaoFCf3AIQa38EvZC9zdxQI";
+        // $Token = "6UTdo1OJF6WRHLiTJxsN90vGz2eXewUHI7xZ3SSw1dR";
         $message = "มีรายการสั่งยาใหม่\nหมายเลข HN: ".$data->drug_hn."\nหมายเลข VN: ".$data->drug_vn."\nเตียง/ห้อง: ".$data->drug_bed."
                     \nวันที่สร้าง: ".$data->create_at."\nhttp://172.20.55.10:8000/drugOrder/".base64_encode($data->drug_id)."";
         line_notify($Token, $message);
 
         return redirect('/drugOrder');
+    }
+
+    public function delete(Request $request)
+    {
+        $files = $request->get('files_name');
+        $vn = $request->get('files_vn');
+        $delete = public_path('MDR/'.$vn.'/Order/'.$files);
+        @unlink($delete);
+        // return dd($files.$vn);
     }
 }

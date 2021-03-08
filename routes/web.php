@@ -30,6 +30,7 @@ Route::group(['prefix' => 'drugOrder'], function () {
 	Route::get('/{id}','DrugOrderController@show')->name('drug.show');
     Route::post('/createOrder','DrugOrderController@createOrder')->name('drug.createOrder');
 	Route::post('/uploadFile', 'DrugOrderController@upload');
+	Route::post('/fileDelete', 'DrugOrderController@delete')->name('drug.fileDelete');
 });
 
 Route::group(['prefix' => 'store'], function () {

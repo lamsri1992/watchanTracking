@@ -40,7 +40,8 @@
                                         while (($file = readdir($objOpen)) !== false)
                                         {
                                             if ($file == '.' || $file == '..')continue;
-                                            echo "<a href='".$path.$file."' target='_blank'><i class='far fa-file-pdf'></i> ".$file."</a><br>";
+                                            echo "<a href='".$path.$file."' target='_blank'><i class='far fa-file-pdf'></i> ".$file."</a> 
+                                                  <a href='#' class='delFiles' data-vn='".$list->drug_vn."' data-name='".$file."'><i class='fas fa-times-circle text-danger'></i></a><br>";
                                         }
                                     @endphp
                                 </td>
@@ -70,6 +71,39 @@
 @endsection
 @section('script')
 <script>
-   
+   $('.delFiles').click(function() {
+    var files_name = $(this).attr('data-name');
+    var files_vn = $(this).attr('data-vn');
+    var token = "{{ csrf_token() }}";
+    // alert(files_name);
+    event.preventDefault();
+        Swal.fire({
+            icon: 'warning',
+            title: 'ลบไฟล์ '+ files_name +'\n VN: '+ files_vn +' ?',
+            text: 'หากลบไฟล์แล้ว ไม่สามารถย้อนกลับคืนได้อีก',
+            showCancelButton: true,
+            confirmButtonText: `ยืนยัน`,
+            cancelButtonText: `ยกเลิก`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url:"{{ route('drug.fileDelete') }}",
+                    method:'POST',
+                    data:{files_name: files_name,files_vn: files_vn,_token: token},
+                    success:function(data){
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'ลบไฟล์',
+                            showConfirmButton: false,
+                            timer: 3000
+                        })
+                        window.setTimeout(function () {
+                            location.reload()
+                        }, 1500);
+                    }
+                });
+            }
+        })
+});
 </script>
 @endsection
