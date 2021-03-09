@@ -44,63 +44,25 @@
             </article>
             <div class="track">
                 <div class="step active"> 
-                    <span class="icon" data-toggle="tooltip" data-placement="top" title="งานผู้ป่วยในดำเนินการ Discharge แล้ว"><i class="fa fa-external-link-alt"></i></span> 
+                    <span class="icon" data-toggle="tooltip" data-placement="top" title="งานผู้ป่วยในดำเนินการ Discharge"><i class="fa fa-external-link-alt"></i></span> 
                     <span class="text"><i class="fa fa-check text-success"></i> IPD Discharge</span>
                 </div>
                 <div class="step"> 
-                    <span class="icon" data-toggle="tooltip" data-placement="top" title="งานเภสัชกรรมตรวจสอบ + พิมพ์ใบ 16 รายการแล้ว"><i class="fa fa-notes-medical"></i></span>
+                    <span class="icon" data-toggle="tooltip" data-placement="top" title="งานเภสัชกรรมตรวจสอบเวชระเบียนผู้ป่วยใน + พิมพ์ใบ 16 รายการ"><i class="fa fa-notes-medical"></i></span>
                     <span class="text">งานเภสัชกรรม</span> 
                 </div>
-                <div class="step"> 
-                    <span class="icon" data-toggle="tooltip" data-placement="top" title="งานศูนย์ข้อมูลคัดแยกเวชระเบียนผู้ป่วยในตามแพทย์แล้ว"><i class="fa fa-database"></i></span>
-                    <span class="text">งานศูนย์ข้อมูล</span> 
-                    <small>เกียรติศักดิ์ เด่นแสงจันทร์</small>
-                </div>
                 <div class="step">
-                    <span class="icon" data-toggle="tooltip" data-placement="top" title="กลุ่มการแพทย์กำลังดำเนินการ"><i class="fa fa-user-md"></i></span>
+                    <span class="icon" data-toggle="tooltip" data-placement="top" title="กลุ่มการแพทย์ตรวจสอบเวชระเบียนผู้ป่วยใน"><i class="fa fa-user-md"></i></span>
                     <span class="text">กลุ่มการแพทย์</span>
                     <small>แพทย์เจ้าของเคส</small>
                 </div>
                 <div class="step">
-                    <span class="icon" data-toggle="tooltip" data-placement="top" title="รอดำเนินการ"><i class="fa fa-clipboard-check"></i></span>
+                    <span class="icon" data-toggle="tooltip" data-placement="top" title="ตรวจสอบ + สแกนเวชระเบียนเก็บในระบบ"><i class="fa fa-clipboard-check"></i></span>
                     <span class="text">งานเวชระเบียน</span>
                     <small>วนิดา พิทยาการนุรัตน์</small>
                 </div>
             </div>
-        </div><br>
-        {{-- <div class="container-fluid">
-            <h6><i class="fa fa-sync-alt"></i> กระบวนการการทำงาน</h6>
-            <table class="table table-striped table-borderless table-sm">
-                <thead class="thead-dark">
-                    <tr>
-                        <th class="text-center">#</th>
-                        <th><i class="fas fa-map-marker-alt"></i> หน่วยบริการ</th>
-                        <th><i class="fas fa-search"></i> รายละเอียด</th>
-                        <th class="text-center"><i class="far fa-clock"></i> วันที่/เวลา</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th class="text-center">1</th>
-                        <td>IPD Discharge</td>
-                        <td>Discharge คนไข้หอผู้ป่วยใน จำนวน 3 เคส</td>
-                        <td class="text-center">2021-01-27 08:30:00</td>
-                    </tr>
-                    <tr>
-                        <th class="text-center">2</th>
-                        <td>งานเภสัชกรรม</td>
-                        <td>ตรวจสอบและพิมพ์ใบ 16 รายการเสร็จสิ้น</td>
-                        <td class="text-center">2021-01-27 09:30:00</td>
-                    </tr>
-                    <tr>
-                        <th class="text-center">3</th>
-                        <td>งานศูนย์ข้อมูล</td>
-                        <td>คัดแยกเวชระเบียนผู้ป่วยใน ตามแพทย์ผู้ตรวจ และดำเนินการจำหน่ายแล้ว</td>
-                        <td class="text-center">2021-01-27 09:45:00</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div> --}}
+        </div>
         <div class="container-fluid">
             <h6><i class="fa fa-clipboard-list"></i> รายการเวชระเบียนผู้ป่วยใน</h6>
             <table class="table table-striped table-borderless table-sm">
