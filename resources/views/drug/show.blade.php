@@ -24,8 +24,16 @@
                                 <td>{{ $list->drug_hn }}</td>
                             </tr>
                             <tr>
+                                <th class="text-center">ผู้ป่วย</th>
+                                <td>{{ $list->drug_patient }}</td>
+                            </tr>
+                            <tr>
                                 <th class="text-center">เตียง/ห้อง</th>
                                 <td>{{ $list->drug_bed }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">แพทย์ผู้ดูแล</th>
+                                <td>{{ $list->drug_doctor }}</td>
                             </tr>
                             <tr>
                                 <th class="text-center">วันที่สร้าง</th>

@@ -19,6 +19,12 @@
                         <a href="/drugOrder/createDrugOrder" class="btn btn-danger"><i class="fa fa-plus-circle"></i> สร้างรายการใหม่</a>
                     </div>
                 </div>
+                @if ($message = Session::get('error'))
+                <div id="alert" class="alert alert-danger alert-block">
+                    <button type="button" class="close" data-dismiss="alert">×</button>	
+                    <strong>{{ $message }}</strong>
+                </div>
+                @endif
                 <table id="trackList" class="display" width="100%">
                     <thead style="color:white;background-color:#343a40;">
                         <tr>
@@ -39,9 +45,20 @@
                             <td class="text-center">{{ $list->drug_bed }}</td>
                             <td class="text-center">{{ $list->create_at }}</td>
                             <td class="text-center">
-                                <a href="{{ route('drug.show',base64_encode($list->drug_id)) }}" class="btn btn-info btn-sm">
-                                    <i class="fa fa-search"></i> ดูรายการ
-                                </a>
+                                <div class="dropdown">
+                                    <button class="btn btn-info btn-sm dropdown-toggle" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        ตัวเลือก
+                                    </button>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenu" style="font-size:14px;">
+                                        <a class="dropdown-item"  href="{{ route('drug.show',base64_encode($list->drug_id)) }}" class="btn btn-info btn-sm">
+                                            <i class="fa fa-search"></i> ดูรายการ
+                                        </a>
+                                        <a class="dropdown-item text-danger"  href="{{ route('drug.discharge',base64_encode($list->drug_id)) }}" class="btn btn-info btn-sm"
+                                            onclick="return confirm('ยืนยันการ Disharge VN: {{ $list->drug_vn }}')">
+                                            <i class="fa fa-times-circle"></i> Discharge
+                                        </a>
+                                    </div>
+                                  </div>
                             </td>
                         </tr>
                         @endforeach
@@ -82,5 +99,11 @@
             }
         });
     });
+
+$(document).ready(function() {
+    $("#alert").fadeTo(5000, 500).slideUp(500, function() {
+      $("#alert").slideUp(500);
+    });
+});
 </script>
 @endsection

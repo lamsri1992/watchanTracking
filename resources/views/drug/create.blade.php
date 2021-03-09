@@ -18,8 +18,9 @@
                             <th class="text-center">หมายเลข VN</th>
                             <th class="text-center"><i class="far fa-calendar-check"></i> วันที่ Admit</th>
                             <th class="text-center">หมายเลข HN</th>
-                            <th class=""><i class="fas fa-user-md"></i> แพทย์ผู้ตรวจ</th>
+                            <th class="text-center"><i class="far fa-address-card"></i> ผู้ป่วย</th>
                             <th class="text-center"><i class="fa fa-bed"></i> เตียง/ห้อง</th>
+                            <th class=""><i class="fas fa-user-md"></i> แพทย์ผู้ตรวจ</th>
                             <th class="text-center"><i class="fa fa-plus-circle"></i>&nbsp;</th>
                         </tr>
                     </thead>
@@ -43,14 +44,20 @@
             { 'data': 'visit_vn', className: "text-center" },
             { 'data': 'visit_begin_admit_date_time', className: "text-center" },
             { 'data': 'visit_hn', className: "text-center" },
+            { 'data': 'patient',
+                render: function (data, type, row, meta) {
+                return row.patient_firstname + ' ' + row.patient_lastname
+            }, className: "text-center"
+            },
+            { 'data': 'visit_bed', className: "text-center" },
             { 'data': 'doctor',
                 render: function (data, type, row, meta) {
                 return row.employee_firstname + ' ' + row.employee_lastname
-            }
+            }, className: "text-center"
             },
-            { 'data': 'visit_bed', className: "text-center" },
             { 'targets': -1, 'data': null, className: "text-center",
-                'defaultContent': '<button class="btn btn-sm btn-success"><i class="fa fa-plus-circle"></i> Orders</button>'}
+                'defaultContent': '<button class="btn btn-sm btn-success"><i class="fa fa-plus-circle"></i> Orders</button>'
+            }
         ],
         order: [[0, 'asc']],
         lengthMenu: [
@@ -77,8 +84,7 @@
     $('#visitList tbody').on('click', 'button', function () {
         var formData = table.row( $(this).parents('tr') ).data();
         var token = "{{ csrf_token() }}";
-        // console.log(formData);
-        // console.log(token);
+
         event.preventDefault();
         Swal.fire({
             title: 'ยืนยันการสร้าง Drug Order ?',

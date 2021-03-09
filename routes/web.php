@@ -28,6 +28,7 @@ Route::group(['prefix' => 'drugOrder'], function () {
 	Route::get('/','DrugOrderController@index')->name('drug.index');
 	Route::get('/createDrugOrder', function () { return view('drug.create'); });
 	Route::get('/{id}','DrugOrderController@show')->name('drug.show');
+	Route::get('/discharge/{id}','DrugOrderController@discharge')->name('drug.discharge');
     Route::post('/createOrder','DrugOrderController@createOrder')->name('drug.createOrder');
 	Route::post('/uploadFile', 'DrugOrderController@upload');
 	Route::post('/fileDelete', 'DrugOrderController@delete')->name('drug.fileDelete');

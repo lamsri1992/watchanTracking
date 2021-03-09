@@ -13,6 +13,7 @@ class DrugOrderController extends Controller
     function index()
     {
         $data = DB::connection('mysql')->table('order_drug')
+                ->where('drug_status', '=' , NULL)
                 ->get();
         return view('drug.index', ['data'=>$data]);
     }
@@ -36,6 +37,8 @@ class DrugOrderController extends Controller
                 [
                     'drug_hn' => $json['visit_hn'],
                     'drug_vn' => $json['visit_vn'],
+                    'drug_patient' => $json['patient_firstname']." ".$json['patient_lastname'],
+                    'drug_doctor' => $json['employee_firstname']." ".$json['employee_lastname'],
                     'drug_bed' => $json['visit_bed']
                 ]
             );
@@ -69,6 +72,17 @@ class DrugOrderController extends Controller
         $vn = $request->get('files_vn');
         $delete = public_path('MDR/'.$vn.'/Order/'.$files);
         @unlink($delete);
-        // return dd($files.$vn);
+    }
+
+    function discharge($id)
+    {
+        $parm_id = base64_decode($id);
+        $list = DB::connection('mysql')->table('order_drug')
+                ->where('drug_id', $parm_id)
+                ->first();
+        DB::connection('mysql')->table('order_drug')->where('drug_id', $parm_id)->update(
+            ['drug_status' => 'Discharge']
+        );
+        return back()->with("error","Discharge VN: ".$list->drug_vn." เรียบร้อยแล้ว");
     }
 }

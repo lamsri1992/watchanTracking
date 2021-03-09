@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
-            <img src="https://office.watchanhospital.com/assets/img/logo.png" width="40" height="30"
+            <img src="https://dis.watchanhospital.com/assets/img/logo.png" width="40" height="30"
                 class="d-inline-block align-top">
             <small> โรงพยาบาลวัดจันทร์เฉลิมพระเกียรติ ๘๐ พรรษา</small>
         </a>
