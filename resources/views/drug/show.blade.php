@@ -48,7 +48,7 @@
                                         while (($file = readdir($objOpen)) !== false)
                                         {
                                             if ($file == '.' || $file == '..')continue;
-                                            echo "<a href='".$path.$file."' target='_blank'><i class='far fa-file-pdf'></i> ".$file."</a> 
+                                            echo "<a href='".$path.$file."' target='_blank'><i class='far fa-file-image'></i> ".$file."</a> 
                                                   <a href='#' class='delFiles' data-vn='".$list->drug_vn."' data-name='".$file."'><i class='fas fa-times-circle text-danger'></i></a><br>";
                                         }
                                     @endphp
@@ -71,14 +71,15 @@
                         </form>
                     </div>
                     <div class="container-fluid">
-                        <span><i class="far fa-eye"></i> Preview</span>
                     @php
                         $path = "/MDR/".$list->drug_vn."/Order/";
                         $objOpen = opendir('MDR/'.$list->drug_vn.'/Order');
                         while (($file = readdir($objOpen)) !== false)
                         {
                             if ($file == '.' || $file == '..')continue;
-                            echo "<iframe src='".$path.$file."' style='width:100%;height:700px;''></iframe><br>";
+                            echo "<a data-fancybox='gallery' href='".$path.$file."'>
+                                    <img src='".$path.$file."' class='img-fluid img-thumbnail' width='30%'>&nbsp;&nbsp;
+                                  </a>";
                         }
                     @endphp
                     </div>

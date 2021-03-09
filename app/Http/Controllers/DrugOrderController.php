@@ -48,10 +48,10 @@ class DrugOrderController extends Controller
     public function upload(Request $request)
     {
         // Upload Files
-        $file = $request->file('vn_file');
-        $file_name = $file->getClientOriginalName();
+        $image  = $request->file('vn_file');
         $vn = $request->get('vn_id');
-        $file->move(public_path('MDR/'.$vn.'/Order'), $file_name);
+        $fileName = (date('dmYHis'))."_".$vn;
+        $image->move(public_path('MDR/'.$vn.'/Order'), $fileName);
         // Get data detail -> send line message
         $data = DB::connection('mysql')->table('order_drug')
                 ->where('order_drug.drug_vn', $vn)
