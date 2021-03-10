@@ -24,7 +24,10 @@ class DrugOrderController extends Controller
         $list = DB::connection('mysql')->table('order_drug')
                 ->where('drug_id', $parm_id)
                 ->first();
-        return view('drug.show', ['list'=>$list]);
+        $note = DB::connection('mysql')->table('order_drug_comment')
+                ->where('drug_id', $parm_id)
+                ->get();
+        return view('drug.show', ['list'=>$list ,'note'=>$note]);
     }
 
     function createOrder(Request $request)
