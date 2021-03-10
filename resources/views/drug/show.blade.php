@@ -19,7 +19,7 @@
         <div class="card-body">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-7">
+                    <div class="col-6">
                         <table class="table table-striped table-borderless">
                             <tr>
                                 <th class="text-center">หมายเลข VN</th>
@@ -62,7 +62,7 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="col-5">
+                    <div class="col-6">
                         <h3>อัพโหลด Order</h3>
                         <form action="{{ url('/drugOrder/uploadFile') }}" method="POST" enctype="multipart/form-data">
                             {{ csrf_field() }}
@@ -131,6 +131,12 @@
                 });
             }
         })
+});
+
+$(document).ready(function() {
+    $("#alert").fadeTo(5000, 500).slideUp(500, function() {
+      $("#alert").slideUp(500);
+    });
 });
 </script>
 @endsection

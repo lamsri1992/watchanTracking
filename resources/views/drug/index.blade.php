@@ -6,14 +6,14 @@
     <article class="card">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-notes-medical"></i> รายการสั่งยาผู้ป่วยใน</li>
+                <li class="breadcrumb-item active" aria-current="page"><i class="fas fa-notes-medical"></i> รายการออเดอร์ผู้ป่วยใน</li>
             </ol>
         </nav>
         <div class="card-body">
             <div class="container-fluid">
                 <div class="row" style="margin-bottom: 1rem;">
                     <div class="col-6">
-                        <h2>รายการสั่งยาผู้ป่วยใน</h2>
+                        <h2>รายการออเดอร์ผู้ป่วยในทั้งหมด</h2>
                     </div>
                     <div class="col-6 text-right">
                         <a href="/drugOrder/createDrugOrder" class="btn btn-danger"><i class="fa fa-plus-circle"></i> สร้างรายการใหม่</a>
