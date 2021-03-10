@@ -31,6 +31,7 @@
                             <th class="text-center">ID</th>
                             <th class="text-center">หมายเลข VN</th>
                             <th class="text-center">หมายเลข HN</th>
+                            <th class="text-center">ผู้ป่วย</th>
                             <th class="text-center">เตียง/ห้อง</th>
                             <th class="text-center"><i class="far fa-calendar-plus"></i> วันที่สร้าง</th>
                             <th class="text-center">ตัวเลือก</th>
@@ -42,6 +43,7 @@
                             <th class="text-center">ODL23736{{ str_pad($list->drug_id, 4, '0', STR_PAD_LEFT) }}</th>
                             <td class="text-center">{{ $list->drug_vn }}</td>
                             <td class="text-center">{{ $list->drug_hn }}</td>
+                            <td class="text-center">{{ $list->drug_patient }}</td>
                             <td class="text-center">{{ $list->drug_bed }}</td>
                             <td class="text-center">{{ $list->create_at }}</td>
                             <td class="text-center">

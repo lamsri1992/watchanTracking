@@ -9,13 +9,23 @@
             <strong>{{ $message }}</strong>
         </div>
     @endif
+    @if($message = Session::get('send'))
+        <div id="alert" class="alert alert-success alert-block">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <strong>{{ $message }}</strong>
+        </div>
+    @endif
     <article class="card">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/drugOrder"><i class="fas fa-notes-medical"></i>
-                        รายการสั่งยาผู้ป่วยใน</li></a>
+                <li class="breadcrumb-item">
+                    <a href="/drugOrder"><i class="fas fa-notes-medical"></i>
+                        รายการสั่งยาผู้ป่วยใน
+                    </a>
+                </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    ODL23736{{ str_pad($list->drug_id, 4, '0', STR_PAD_LEFT) }}</li>
+                    ODL23736{{ str_pad($list->drug_id, 4, '0', STR_PAD_LEFT) }}
+                </li>
                 <div style="margin-left: 60%">
                     <a href="#" class="badge badge-danger" style="font-size: 14px;" data-toggle="modal"
                         data-target="#messageModal">
@@ -92,7 +102,8 @@
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-upload"></i>
-                                    Upload</button>
+                                    Upload
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -135,8 +146,6 @@
             <div class="modal-body">
                 <div class="messaging">
                     <div class="inbox_msg">
-                        <div class="inbox_people">
-                        </div>
                         <div class="mesgs">
                             <div class="msg_history">
                                 @foreach ($note as $chat)
@@ -153,17 +162,24 @@
                                     </div>
                                 @endforeach
                             </div>
-                            <div class="type_msg">
-                                <div class="input_msg_write">
-                                    <input type="text" class="write_msg" placeholder="ฝากข้อความ" />
-                                    <button class="msg_send_btn" type="button"><i class="far fa-paper-plane" aria-hidden="true"></i></button>
+                            <form action="{{ url('/drugOrder/messageNote') }}" method="POST">
+                                {{ csrf_field() }}
+                                {{ method_field('POST') }}
+                                <div class="type_msg">
+                                    <div class="form-group">
+                                        <textarea type="text" name="note" class="form-control" rows="3" placeholder="ฝากข้อความ" required></textarea>
+                                        <input type="hidden" name="drug_id" value="{{ $list->drug_id }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="comment" class="form-control" placeholder="ผู้ฝากข้อความ" required>
+                                    </div>
+                                    <div class="text-right">
+                                        <button class="btn btn-info btn-sm" type="submit"><i class="far fa-paper-plane" aria-hidden="true"></i> send</button>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
-                </div>
-                <div class="text-right">
-                    <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">ปิดหน้าต่าง</button>
                 </div>
             </div>
         </div>

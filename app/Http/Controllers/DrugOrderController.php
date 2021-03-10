@@ -60,9 +60,9 @@ class DrugOrderController extends Controller
                 ->where('order_drug.drug_vn', $vn)
                 ->first();
         // send line message
-        $Token = "qhtvdJ3vVilU4pkcUlcimaoFCf3AIQa38EvZC9zdxQI";
+        // $Token = "qhtvdJ3vVilU4pkcUlcimaoFCf3AIQa38EvZC9zdxQI";
         // PHAR
-        // $Token = "6UTdo1OJF6WRHLiTJxsN90vGz2eXewUHI7xZ3SSw1dR";
+        $Token = "6UTdo1OJF6WRHLiTJxsN90vGz2eXewUHI7xZ3SSw1dR";
         $message = "มีรายการสั่งยาใหม่\nหมายเลข HN: ".$data->drug_hn."\nหมายเลข VN: ".$data->drug_vn."\nเตียง/ห้อง: ".$data->drug_bed."
                     \nวันที่สร้าง: ".$data->create_at."\nhttp://172.20.55.10:8000/drugOrder/".base64_encode($data->drug_id)."";
         line_notify($Token, $message);
@@ -88,5 +88,17 @@ class DrugOrderController extends Controller
             ['drug_status' => 'Discharge']
         );
         return back()->with("error","Discharge VN: ".$list->drug_vn." เรียบร้อยแล้ว");
+    }
+
+    function messageNote(Request $request)
+    {
+        DB::connection('mysql')->table('order_drug_comment')->insert(
+            [
+                'dm_note' => $request->note,
+                'dm_comment' => $request->comment,
+                'drug_id' => $request->drug_id,
+            ]
+        );
+        return back()->with("send","ฝากข้อความเรียบร้อยแล้ว");
     }
 }
